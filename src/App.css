@@ -1,0 +1,341 @@
+.navbar {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 1rem 0;
+  border-bottom: 1px solid;
+  border-bottom-style: groove;
+  position: relative;
+}
+
+.navbar ul li {
+  display: inline-block;
+  margin: 0 1rem;
+  color: rgb(7, 135, 92);
+}
+
+.navbar ul li:hover {
+  color: rgb(7, 215, 14);
+}
+
+.cartBadge {
+  border-radius: 50%;
+  font-size: .7rem;
+  padding: 0 4px;
+  background-color: rgb(7, 135, 92);
+  color: #ffffff;
+}
+
+.cartDropdown {
+  position: absolute;
+  top: 4rem;
+  right: calc(100vw - 88vw);
+  width: 14rem;
+  height: max-content;
+  padding: 10px;
+  border-radius: 2px;
+  box-shadow: 0px 0px 4px #000000;
+  text-align: center;
+  background-color: rgb(255, 255, 255);
+  z-index: 4;
+}
+
+.cartLink {
+  color: #000000;
+  text-decoration: none;
+}
+
+.dropdownCartItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  height: 3rem;
+}
+
+.dropdownCartItem img {
+  width: 25%;
+}
+
+.dropdownCartItemHrLine {
+  width: 85%;
+  margin: 5px auto;
+}
+
+.productList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: start;
+  margin: 2rem 1rem;
+}
+
+.product {
+  width: 15rem;
+  padding: 1rem;
+  margin: 1rem;
+  transition: .5s;
+}
+
+.product .imgDiv img {
+  width: 100%;
+}
+
+.product:hover {
+  transform: scale(1.1);
+  box-shadow: 0px 0px 2px rgb(7, 135, 92);
+}
+
+.addBtn {
+  padding: 10px 2rem;
+  background-color: rgb(7, 135, 92);
+  border: none;
+  border-radius: 2px;
+  margin: 1rem 0;
+  cursor: pointer;
+  color: aliceblue;
+}
+
+.cart {
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap-reverse;
+}
+
+.cart .items {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: start;
+  margin: 2rem 1rem;
+}
+
+.cartItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 20rem;
+  border-bottom: 2px solid;
+  border-bottom-style: groove;
+  padding: 1rem;
+  margin: 1rem;
+}
+
+.cartItem .imgDiv img {
+  width: 60%;
+}
+
+.addOneBtn {
+  padding: 5px 10px;
+  margin: 10px 0;
+  background-color: aliceblue;
+  border: 1px solid gray;
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+.cartItem .details {
+  text-align: right;
+}
+
+.cartItem .removeBtn {
+  padding: 10px 2rem;
+  margin: 1rem 0;
+  background-color: rgb(246, 49, 49);
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+  color: aliceblue;
+}
+
+.checkoutDetails {
+  position: sticky;
+  top: 100px;
+}
+
+.checkoutBtn {
+  width: 100%;
+  padding: 10px 2rem;
+  background-color: #000000;
+  color: #ffffff;
+  border: none;
+  border-radius: 2px;
+  margin: 1rem 0;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.loginRegisterDiv {
+  height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.loginRegisterDiv img {
+  user-select: none;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+
+.loginRegisterDiv .mainLoginRegister {
+  width: 50rem;
+  height: 30rem;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  box-shadow: 0px 0px 5px #d007da;
+  z-index: 1;
+}
+
+.mainLoginRegister .leftLoginRegisterDiv {
+  height: 100%;
+  width: 100%;
+  position: relative;
+}
+
+.leftLoginRegisterDiv .welcomeDiv {
+  position: absolute;
+  color: #ffffff;
+  padding: 1rem;
+  text-align: center;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin-top: calc(25%);
+  z-index: 2;
+}
+
+.leftLoginRegisterDiv .welcomeDiv .detailBtn {
+  padding: 8px 2rem;
+  margin: 2rem 0;
+  background-color: #ffffff;
+  border: none;
+  border-radius: 5px;
+}
+
+.leftLoginRegisterDiv img {
+  width: 100%;
+  height: 100%;
+}
+
+.mainLoginRegister .rightLoginRegisterDiv {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+}
+
+.rightLoginRegisterDiv #form-control {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  color: gray;
+}
+
+#form-control input,
+.loginBtn,
+.switchBtn {
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 5px;
+  border: none;
+}
+
+.switchBtn {
+  background-color: rgb(224, 223, 223);
+  color: rgb(77, 77, 77);
+  margin: 0 1rem;
+}
+
+.logoutBtn {
+  padding: 10px 1rem;
+  margin-left: 1rem;
+  border-radius: 5px;
+  border: 1px solid rgb(7, 135, 92);
+  background-color: transparent;
+  color: #ffffff;
+  color: rgb(7, 135, 92);
+}
+
+#form-control input {
+  background-color: rgb(216, 238, 246);
+}
+
+#form-control .loginBtn {
+  background-image: linear-gradient(90deg, rgb(235, 3, 96), rgb(70, 6, 148));
+  color: #ffffff;
+}
+
+.productDetail {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 2rem;
+  color: rgb(75, 75, 75);
+}
+
+.productDetail .detail span {
+  font-weight: bold;
+}
+
+.productDetail .detail p {
+  margin: 20px 0;
+}
+
+:focus {
+  outline: none;
+}
+
+@media (max-width: 768px) {
+  .loginRegisterDiv .mainLoginRegister {
+    box-shadow: none;
+  }
+
+  .mainLoginRegister .leftLoginRegisterDiv {
+    display: none;
+  }
+
+  .mainLoginRegister .rightLoginRegisterDiv {
+    margin: 0 auto;
+    width: 20rem;
+  }
+}
+
+@media (max-width: 427px) {
+  .navbar {
+    height: 25px;
+    font-size: .8rem;
+  }
+
+  .navbar ul .logoutBtn {
+    font-size: .7rem;
+  }
+
+  .cart .items {
+    margin: 2rem 0;
+    overflow-x: hidden;
+  }
+
+  .cartItem {
+    width: 100%;
+    padding: 1rem;
+    margin: 0;
+    display: block;
+  }
+
+  .cartItem .details {
+    text-align: left;
+  }
+
+  .cartItem .imgDiv img {
+    width: 50%;
+  }
+
+}

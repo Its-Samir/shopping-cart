@@ -1,0 +1,25 @@
+{
+    "products": [
+        {
+            "id": 1,
+            "title": "Product 1",
+            "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGaFJn2kXD9_tM9sDubs67zWPkXE224gZmUA&usqp=CAU",
+            "price": 20,
+            "quantity": 1
+        },
+        {
+            "id": 2,
+            "title": "Product 2",
+            "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSOvL9-tDHscngg9NDVRnJ5S0BGsBFvXPLDtg&usqp=CAU",
+            "price": 15,
+            "quantity": 1
+        },
+        {
+            "id": 3,
+            "title": "Product 3",
+            "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_F7Tn_rH5U03BOlxPqpyPEdGbJas0LYT87IkTeE6czNz2Iew04UVgiyESgU8GrnZ_Z1A&usqp=CAU",
+            "price": 5,
+            "quantity": 1
+        }
+    ]
+}
