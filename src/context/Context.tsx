@@ -76,10 +76,6 @@ const reducer = (state: InitStateType, action: ActionReducerType): InitStateType
         case ActionType.checkout:
             localStorage.setItem('successShop', JSON.stringify(state.token))
 
-            setTimeout(() => {
-                localStorage.removeItem('successShop')
-            }, 5000)
-
             return {
                 token: state.token,
                 items: [],
@@ -162,6 +158,10 @@ const StoreContextProvider = (props: { children: React.ReactNode }) => {
         logout,
         totalPrice: state.totalPrice
     }
+
+    setTimeout(() => {
+        localStorage.removeItem('successShop')
+    }, 5000)
 
     return (
         <StoreContext.Provider value={contextValue}>

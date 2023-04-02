@@ -9,6 +9,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@emotion/react": "^11.10.6",
+    "@emotion/styled": "^11.10.6",
+    "@mui/material": "^5.11.15",
     "@types/node": "^18.15.11",
     "dotenv": "^16.0.3",
     "json-server": "^0.17.2",

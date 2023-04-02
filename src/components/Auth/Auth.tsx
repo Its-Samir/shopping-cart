@@ -1,6 +1,7 @@
 import React, { useRef, useState } from 'react';
 import { StoreContext } from '../../context/Context';
 import { Link } from 'react-router-dom';
+import { CircularProgress } from '@mui/material';
 
 type AuthResponseType = {
     email: string;
@@ -13,6 +14,7 @@ type AuthResponseType = {
 }
 
 function Login() {
+    const [loading, setLoading] = useState(false);
     const emailRef = useRef<HTMLInputElement>(null);
     const passwordRef = useRef<HTMLInputElement>(null);
     const ctx = React.useContext(StoreContext);
@@ -22,6 +24,8 @@ function Login() {
         const signUpUrl = 'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyCMv7M8Uu06DQHkUvAMObodGYMcvdXETvo';
         const signInUrl = 'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyCMv7M8Uu06DQHkUvAMObodGYMcvdXETvo';
         let currentUrl;
+
+        setLoading(true);
 
         event.preventDefault();
 
@@ -50,7 +54,8 @@ function Login() {
                 return alert(data.error.message);
             }
             ctx.login(data.idToken)
-
+            setLoading(false);
+            
         }).catch(err => {
             console.log(err.message)
             alert(err.message ? err.message : 'Something went wrong, please try later');
@@ -84,7 +89,7 @@ function Login() {
                         <h1>{isLogin ? 'Login' : 'Register'}</h1>
                         <input ref={emailRef} type="email" placeholder={`${isLogin ? 'Enter your' : 'Choose an'} email`} />
                         <input ref={passwordRef} type="password" placeholder={`${isLogin ? 'Enter your' : 'Choose an'} password`} />
-                        <button className="loginBtn">{isLogin ? 'Login' : 'Register'}</button>
+                        <button className="loginBtn">{isLogin ? !loading ? 'Login' : <CircularProgress color='secondary' /> : !loading ? 'Register' : <CircularProgress color='secondary' />}</button>
                         <hr />
                     </form>
                     <button onClick={() => setIsLogin(p => !p)} className='switchBtn'>Switch to {isLogin ? 'Register' : 'Login'}</button>
