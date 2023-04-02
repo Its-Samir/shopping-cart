@@ -51,13 +51,12 @@ function Login() {
             return res.json();
         }).then((data: AuthResponseType) => {
             if (data.error) {
-                return alert(data.error.message);
+                return alert(data.error.message + ' or maybe consider registering your account if you have not yet');
             }
             ctx.login(data.idToken)
             setLoading(false);
-            
+
         }).catch(err => {
-            console.log(err.message)
             alert(err.message ? err.message : 'Something went wrong, please try later');
         })
     }
@@ -89,7 +88,7 @@ function Login() {
                         <h1>{isLogin ? 'Login' : 'Register'}</h1>
                         <input ref={emailRef} type="email" placeholder={`${isLogin ? 'Enter your' : 'Choose an'} email`} />
                         <input ref={passwordRef} type="password" placeholder={`${isLogin ? 'Enter your' : 'Choose an'} password`} />
-                        <button className="loginBtn">{isLogin ? !loading ? 'Login' : <CircularProgress color='secondary' /> : !loading ? 'Register' : <CircularProgress color='secondary' />}</button>
+                        <button className="loginBtn">{isLogin ? !loading ? 'Login' : <CircularProgress style={{ height: '12px', width: '12px' }} color='inherit' /> : !loading ? 'Register' : <CircularProgress style={{ height: '12px', width: '12px' }} color='inherit' />}</button>
                         <hr />
                     </form>
                     <button onClick={() => setIsLogin(p => !p)} className='switchBtn'>Switch to {isLogin ? 'Register' : 'Login'}</button>
