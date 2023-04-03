@@ -21,13 +21,12 @@ function Login() {
     const [isLogin, setIsLogin] = useState<boolean>(true);
 
     function handleSubmit(event: React.FormEvent) {
-        const signUpUrl = 'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyCMv7M8Uu06DQHkUvAMObodGYMcvdXETvo';
-        const signInUrl = 'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyCMv7M8Uu06DQHkUvAMObodGYMcvdXETvo';
-        let currentUrl;
+        event.preventDefault();
+        const signUpUrl: string = import.meta.env.VITE_SIGNUP_URL;
+        const signInUrl: string = import.meta.env.VITE_SIGNIN_URL;
+        let currentUrl: string;
 
         setLoading(true);
-
-        event.preventDefault();
 
         if (typeof emailRef.current?.value === 'undefined' || typeof passwordRef.current?.value === 'undefined' || emailRef.current.value === '' || passwordRef.current.value === '') {
             return;
@@ -47,16 +46,20 @@ function Login() {
                 password: passwordRef.current.value,
                 returnSecureToken: true
             })
+
         }).then(res => {
             return res.json();
+
         }).then((data: AuthResponseType) => {
             if (data.error) {
+                setLoading(false);
                 return alert(data.error.message + ' or maybe consider registering your account if you have not yet');
             }
             ctx.login(data.idToken)
             setLoading(false);
 
         }).catch(err => {
+            setLoading(false);
             alert(err.message ? err.message : 'Something went wrong, please try later');
         })
     }
