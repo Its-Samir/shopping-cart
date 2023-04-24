@@ -13,7 +13,7 @@ type PropType = {
 
 function Product(props: PropType) {
   const ctx = useContext(StoreContext);
-
+  const existProduct = ctx.items.find(p => p.id === props.id);
   return (
     <div className="product">
       <Link style={{ color: 'black', textDecoration: 'none' }} to={`/product/${props.id}`}>
@@ -24,7 +24,7 @@ function Product(props: PropType) {
         <p>Rating: {props.rating} Star(s)</p>
         <p>Price: <strong>₹{props.price}/-</strong></p>
       </Link>
-      <button onClick={() => ctx.add(props.id)} className="addBtn">Add to Cart</button>
+      <button onClick={() => ctx.add(props.id)} className="addBtn" style={{backgroundColor: existProduct && 'gray'}} disabled={existProduct ? true : false}>{existProduct ? 'Added to Cart' : 'Add to Cart'}</button>
     </div>
   )
 }

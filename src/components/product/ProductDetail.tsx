@@ -7,6 +7,7 @@ function ProductDetail() {
     const params = useParams();
     const product = products.find(p => p.id === params.id)
     const ctx = useContext(StoreContext);
+    const existProduct = ctx.items.find(p => p.id === product?.id);
 
     return (
         <div className="productDetail">
@@ -22,7 +23,7 @@ function ProductDetail() {
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi asperiores suscipit eligendi? Assumenda veritatis, quaerat eum repellat voluptate itaque recusandae, esse odit doloribus perferendis asperiores voluptates excepturi, dignissimos reiciendis rem tempora sunt nemo quod nesciunt voluptatem fuga! Quisquam, laudantium et? Totam, vitae repellat? Consectetur, enim corrupti non laboriosam odio cupiditate ullam aperiam quos atque labore reprehenderit pariatur aspernatur officiis, earum unde, praesentium ea ipsa magnam voluptas! Laudantium adipisci alias at possimus quasi harum perferendis voluptates deserunt? Cupiditate veritatis ipsam animi delectus eius corrupti vitae. Voluptate nam odio minima et saepe!</p>
 
                 <h4>✔ Available in Stock</h4>
-                <button onClick={() => ctx.add(product?.id!)} className='addBtn'>Add to Cart</button>
+                <button onClick={() => ctx.add(product?.id!)} style={{backgroundColor: existProduct && 'gray'}} disabled={existProduct ? true : false} className='addBtn'>{existProduct ? 'Added to Cart' : 'Add to Cart'}</button>
             </div>
         </div>
     )
