@@ -90,7 +90,7 @@ function Login() {
                     <form onSubmit={handleSubmit} id='form-control' action="">
                         <h1>{isLogin ? 'Login' : 'Register'}</h1>
                         <input ref={emailRef} type="email" placeholder={`${isLogin ? 'Enter your' : 'Choose an'} email`} />
-                        <input ref={passwordRef} type="password" placeholder={`${isLogin ? 'Enter your' : 'Choose an'} password`} />
+                        <input ref={passwordRef} type="password" placeholder={`${isLogin ? 'Enter your' : 'Choose a'} password`} />
                         <button className="loginBtn">{isLogin ? !loading ? 'Login' : <CircularProgress style={{ height: '12px', width: '12px' }} color='inherit' /> : !loading ? 'Register' : <CircularProgress style={{ height: '12px', width: '12px' }} color='inherit' />}</button>
                         <hr />
                     </form>
