@@ -289,6 +289,10 @@
   margin: 20px 0;
 }
 
+.productDetail img {
+  width: 100%;
+}
+
 :focus {
   outline: none;
 }

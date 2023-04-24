@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import { Link } from 'react-router-dom';
 import { StoreContext } from '../../context/Context';
+import {MdShoppingCart} from 'react-icons/md';
 
 type PropType = {
   id: string;
@@ -24,7 +25,7 @@ function Product(props: PropType) {
         <p>Rating: {props.rating} Star(s)</p>
         <p>Price: <strong>₹{props.price}/-</strong></p>
       </Link>
-      <button onClick={() => ctx.add(props.id)} className="addBtn" style={{backgroundColor: existProduct && 'gray'}} disabled={existProduct ? true : false}>{existProduct ? 'Added to Cart' : 'Add to Cart'}</button>
+      <button onClick={() => ctx.add(props.id)} className="addBtn" style={{backgroundColor: existProduct && 'gray', display: 'flex', justifyContent: 'space-between'}} disabled={existProduct ? true : false}><MdShoppingCart style={{marginRight: '5px'}}/> {existProduct ? 'Added to Cart' : 'Add to Cart'}</button>
     </div>
   )
 }
