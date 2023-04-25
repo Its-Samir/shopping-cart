@@ -21,7 +21,8 @@ function ProductDetail() {
                 <hr style={{ margin: '10px 0' }} />
                 <span>Rating: {product?.rating} | Price: ₹{product?.price}/- | Brand: New brand | Exchangable: Yes</span>
                 <hr style={{ margin: '10px 0' }} />
-
+                
+                <strong><u>Description:</u></strong>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi asperiores suscipit eligendi? Assumenda veritatis, quaerat eum repellat voluptate itaque recusandae, esse odit doloribus perferendis asperiores voluptates excepturi, dignissimos reiciendis rem tempora sunt nemo quod nesciunt voluptatem fuga! Quisquam, laudantium et? Totam, vitae repellat? Consectetur, enim corrupti non laboriosam odio cupiditate ullam aperiam quos atque labore reprehenderit pariatur aspernatur officiis, earum unde, praesentium ea ipsa magnam voluptas! Laudantium adipisci alias at possimus quasi harum perferendis voluptates deserunt? Cupiditate veritatis ipsam animi delectus eius corrupti vitae. Voluptate nam odio minima et saepe!</p>
 
                 <h4><FcCheckmark /> Available in Stock</h4>
