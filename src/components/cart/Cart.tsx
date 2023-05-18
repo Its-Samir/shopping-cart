@@ -36,8 +36,8 @@ function Cart() {
           </div>
           <div className="checkoutDiv">
             <div className="checkoutDetails">
-              <h1>Total Price: {ctx.totalPrice}/-</h1>
-              <Link to={'/shopping/success'}><button onClick={() => { ctx.checkout(), checkout() }} className="checkoutBtn">Proceed to Checkout</button></Link>
+              <h2>Total: ₹{ctx.totalPrice}/-</h2>
+              <Link to={'/shopping/checkout/form'}><button onClick={() => { checkout() }} className="checkoutBtn">Proceed to Checkout</button></Link>
             </div>
           </div>
         </>
