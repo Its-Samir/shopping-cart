@@ -1,10 +1,15 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { StoreContext } from '../../context/Context';
 import CartItem from './CartItem';
 import { Link } from 'react-router-dom';
 
 function Cart() {
   const ctx = React.useContext(StoreContext);
+
+  useEffect(() => {
+    let title = document.querySelector('title')!
+    title.innerText = 'Cart';
+  }, []);
 
   const checkout = async () => {
     // await fetch('http://localhost:5000/checkout', {

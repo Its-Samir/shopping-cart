@@ -8,6 +8,7 @@ function Wrapper(props: { children: React.ReactNode }) {
     useEffect(() => {
         window.location.pathname === '/cart' && setShowDropdownCart(false);
         window.location.pathname === '/auth' && setShowDropdownCart(false);
+
     }, [showDropdownCart])
 
     return (

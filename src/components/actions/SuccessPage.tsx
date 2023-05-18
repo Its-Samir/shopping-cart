@@ -6,6 +6,11 @@ import { CircularProgress } from '@mui/material';
 function SuccessPage() {
   let content: JSX.Element = <div style={{ textAlign: 'center', margin: '2rem 0', padding: '1rem' }}><CircularProgress size={50} /></div>
 
+  React.useEffect(() => {
+    let title = document.querySelector('title')!
+    title.innerText = 'Checkout Success';
+  }, []);
+
   const [pageContent, setPageContent] = React.useState(content);
 
   setInterval(() => {

@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { StoreContext } from '../../context/Context';
 import { Link } from 'react-router-dom';
 import { CircularProgress } from '@mui/material';
@@ -19,6 +19,11 @@ function Login() {
     const passwordRef = useRef<HTMLInputElement>(null);
     const ctx = React.useContext(StoreContext);
     const [isLogin, setIsLogin] = useState<boolean>(true);
+
+    useEffect(() => {
+        let title = document.querySelector('title')!
+        title.innerText = 'Authentication';
+    }, []);
 
     function handleSubmit(event: React.FormEvent) {
         event.preventDefault();

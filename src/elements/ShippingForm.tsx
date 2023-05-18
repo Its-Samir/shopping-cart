@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { StoreContext } from '../context/Context';
 
@@ -11,6 +11,11 @@ export default function ShippingForm() {
     const pinCodeRef = React.useRef<HTMLInputElement>(null);
     const navigate = useNavigate();
     const [error, setError] = React.useState('');
+
+    useEffect(() => {
+        let title = document.querySelector('title')!
+        title.innerText = 'Shipping Form';
+    }, []);
 
     function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
         if (event.target.value.length > 0) {
@@ -40,15 +45,15 @@ export default function ShippingForm() {
             {error && <span style={{ color: 'red' }}>* {error}</span>}
 
             <form action="" onSubmit={submitForm}>
-                <label>Name</label>
+                <label>Name {(nameRef.current?.value === '' && error) && <span style={{ color: 'red' }}>(required)</span>} </label>
                 <input onChange={handleChange} ref={nameRef} type="text" name="" id="" placeholder='Enter name' />
-                <label>Email</label>
+                <label>Email {(emailRef.current?.value === '' && error) && <span style={{ color: 'red' }}>(required)</span>}</label>
                 <input onChange={handleChange} ref={emailRef} type="email" name="" id="" placeholder='Enter email' />
-                <label>Mobile No.</label>
+                <label>Mobile No. {(mobileNumberRef.current?.value === '' && error) && <span style={{ color: 'red' }}>(required)</span>}</label>
                 <input onChange={handleChange} ref={mobileNumberRef} type="number" name="" id="" placeholder='Enter Mobile no.' min={0} maxLength={10} />
-                <label>Address</label>
+                <label>Address {(addressRef.current?.value === '' && error) && <span style={{ color: 'red' }}>(required)</span>}</label>
                 <input onChange={handleChange} ref={addressRef} type="text" name="" id="" placeholder='Enter address' />
-                <label>Pin Code</label>
+                <label>Pin Code {(pinCodeRef.current?.value === '' && error) && <span style={{ color: 'red' }}>(required)</span>}</label>
                 <input onChange={handleChange} ref={pinCodeRef} type="number" name="" id="" placeholder='Enter pin' min={0} maxLength={6} />
                 <div className="action">
                     <button onClick={cancelForm} type='button'>Cancel</button>

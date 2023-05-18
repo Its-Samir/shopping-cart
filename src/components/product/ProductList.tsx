@@ -1,8 +1,13 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { products } from '../../dummy_product';
 import Product from './Product';
 
 function ProductList() {
+  useEffect(() => {
+    let title = document.querySelector('title')!;
+    title.innerText = 'CartInFlows | Home';
+  }, []);
+
   return (
     <div className="productList">
       {products.map(p => {

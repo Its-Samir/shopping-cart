@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { products } from '../../dummy_product';
 import { StoreContext } from '../../context/Context';
@@ -12,6 +12,11 @@ function ProductDetail() {
     const product = products.find(p => p.id === params.id)
     const ctx = useContext(StoreContext);
     const existProduct = ctx.items.find(p => p.id === product?.id);
+
+    useEffect(() => {
+        let title = document.querySelector('title')!
+        title.innerText = `${product?.title}`;
+    }, []);
 
     return (
         <div className="productDetail">
