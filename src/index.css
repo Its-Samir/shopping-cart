@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa&family=Dosis&family=Merriweather&family=Montserrat&family=Noto+Sans&display=swap');
 
 * {
   margin: 0;
@@ -5,5 +6,5 @@
 }
 
 body {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Noto Sans', Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
 }
