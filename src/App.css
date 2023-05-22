@@ -259,7 +259,8 @@
 }
 
 .logoutBtn {
-  padding: 10px 1rem;
+  padding: 6px 1rem;
+  margin: 0;
   margin-left: 1rem;
   border-radius: 5px;
   border: 1px solid rgb(7, 135, 92);
@@ -346,7 +347,7 @@ button {
   }
 
   .navbar .links {
-    margin: 8px 0;
+    margin: 6px 0;
   }
 
   /* 
@@ -382,9 +383,9 @@ button {
   }
 
   .checkoutDetails {
-    padding: 10px 5px 0 5px;
+    padding: 10px 0 0 0;
     width: 25rem;
-    max-width: 100%;
+    max-width: 90%;
     margin: auto;
   }
 }
