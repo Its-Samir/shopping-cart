@@ -37,6 +37,7 @@ export default function ShippingForm() {
         }
 
         setTimeout(() => {
+            ctx.checkout();
             navigate('/shopping/checkout/payment');
             setLoading(false);
         }, 1000);

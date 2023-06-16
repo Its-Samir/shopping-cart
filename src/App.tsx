@@ -14,6 +14,8 @@ import Payment from './elements/Payment';
 function App() {
   const ctx = React.useContext(StoreContext);
 
+  const successShop: string = JSON.parse(localStorage.getItem('successShop') as string);
+
   return (
     <div className="App">
       <Wrapper>
@@ -22,9 +24,9 @@ function App() {
           <Route path='/cart' element={ctx.isLoggedIn ? <Cart /> : <Navigate to={'/auth'} />} />
           <Route path='/auth' element={ctx.isLoggedIn ? <Navigate to={'/'} /> : <Login />} />
           <Route path='/product/:id' element={ctx.isLoggedIn ? <ProductDetail /> : <Navigate to={'/auth'} />} />
-          <Route path='/shopping/checkout/form' element={ctx.isLoggedIn ? <ShippingForm /> : <Navigate to={'/auth'} />} />
-          <Route path='/shopping/checkout/payment' element={ctx.isLoggedIn ? <Payment /> : <Navigate to={'/auth'} />} />
-          <Route path='/shopping/checkout/success' element={ctx.isLoggedIn ? <SuccessPage /> : <Navigate to={'/auth'} />} />
+          <Route path='/shopping/checkout/form' element={ctx.isLoggedIn && successShop ? <ShippingForm /> : <Navigate to={'/auth'} />} />
+          <Route path='/shopping/checkout/payment' element={ctx.isLoggedIn && successShop ? <Payment /> : <Navigate to={'/auth'} />} />
+          <Route path='/shopping/checkout/success' element={ctx.isLoggedIn && successShop ? <SuccessPage /> : <Navigate to={'/auth'} />} />
           <Route path='*' element={<h1 style={{ textAlign: 'center' }}>Page not found.</h1>} />
         </Routes>
       </Wrapper>

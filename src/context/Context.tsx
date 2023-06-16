@@ -7,7 +7,8 @@ enum ActionType {
     addOne,
     login,
     logout,
-    checkout
+    checkout,
+    payment
 }
 
 type ActionReducerType = {
@@ -74,7 +75,16 @@ const reducer = (state: InitStateType, action: ActionReducerType): InitStateType
             }
 
         case ActionType.checkout:
-            localStorage.setItem('successShop', JSON.stringify(state.token))
+            localStorage.setItem('successShop', JSON.stringify('successShop'));
+
+            return {
+                token: state.token,
+                items: state.items,
+                totalPrice: state.totalPrice
+            }
+
+        case ActionType.payment:
+            localStorage.setItem('successShop', JSON.stringify('successShop'));
 
             return {
                 token: state.token,
@@ -113,6 +123,7 @@ type ContextType = {
     remove: (id: string) => void;
     addOne: (id: string) => void;
     checkout: () => void;
+    payment: () => void;
     login: (token: string) => void;
     logout: () => void;
     totalPrice: number;
@@ -126,6 +137,7 @@ export const StoreContext = React.createContext<ContextType>({
     remove: () => { },
     addOne: () => { },
     checkout: () => { },
+    payment: () => { },
     login: () => { },
     logout: () => { },
     totalPrice: 0,
@@ -138,6 +150,7 @@ const StoreContextProvider = (props: { children: React.ReactNode }) => {
     const remove = useCallback((id: string) => dispatch({ type: ActionType.remove, payload: id }), []);
     const addOne = useCallback((id: string) => dispatch({ type: ActionType.addOne, payload: id }), []);
     const checkout = useCallback(() => dispatch({ type: ActionType.checkout }), []);
+    const payment = useCallback(() => dispatch({ type: ActionType.payment }), []);
 
     const login = useCallback((token: string) => {
         dispatch({ type: ActionType.login, payload: token });
@@ -154,6 +167,7 @@ const StoreContextProvider = (props: { children: React.ReactNode }) => {
         remove,
         addOne,
         checkout,
+        payment,
         login,
         logout,
         totalPrice: state.totalPrice
@@ -161,7 +175,7 @@ const StoreContextProvider = (props: { children: React.ReactNode }) => {
 
     setTimeout(() => {
         localStorage.removeItem('successShop')
-    }, 5000)
+    }, 4000);
 
     return (
         <StoreContext.Provider value={contextValue}>

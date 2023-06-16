@@ -32,6 +32,7 @@ function Cart() {
 
   function checkoutHandler() {
     navigate('/shopping/checkout/form');
+    ctx.checkout();
   }
 
   return (

@@ -13,14 +13,14 @@ function SuccessPage() {
 
   const [pageContent, setPageContent] = React.useState(content);
 
-  setInterval(() => {
+  setTimeout(() => {
     setPageContent(
       <div style={{ textAlign: 'center', margin: '2rem 0', padding: '1rem' }} className="successPageDiv">
         <IoIosCheckmarkCircle size={50} color='green' />
         <h2 style={{ textAlign: 'center', margin: '1rem 0' }}>Thank you for completing your shopping. Your order is in process. You can go to <Link to={'/'}>Home page</Link></h2>
       </div>
     )
-  }, 4000)
+  }, 4000);
 
   return pageContent;
 }
