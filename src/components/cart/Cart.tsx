@@ -1,10 +1,11 @@
 import React, { useEffect } from 'react';
 import { StoreContext } from '../../context/Context';
 import CartItem from './CartItem';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 function Cart() {
   const ctx = React.useContext(StoreContext);
+  const navigate = useNavigate();
 
   useEffect(() => {
     let title = document.querySelector('title')!
@@ -29,6 +30,10 @@ function Cart() {
     //     });
   }
 
+  function checkoutHandler() {
+    navigate('/shopping/checkout/form');
+  }
+
   return (
     <div className="cart">
       {ctx.items.length > 0 &&
@@ -42,7 +47,7 @@ function Cart() {
           <div className="checkoutDiv">
             <div className="checkoutDetails">
               <h2>Total: ₹{ctx.totalPrice}/-</h2>
-              <Link to={'/shopping/checkout/form'}><button onClick={() => { checkout() }} className="checkoutBtn">PROCEED TO CHECKOUT</button></Link>
+              <button onClick={checkoutHandler} className="checkoutBtn">PROCEED TO CHECKOUT</button>
             </div>
           </div>
         </>

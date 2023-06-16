@@ -1,8 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { StoreContext } from '../../context/Context';
 import { Product } from '../../dummy_product';
-
 
 type PropType = Product;
 
