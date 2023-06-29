@@ -94,6 +94,7 @@ const reducer = (state: InitStateType, action: ActionReducerType): InitStateType
 
         case ActionType.login:
             localStorage.setItem('token', JSON.stringify(action.payload));
+            localStorage.setItem('loggedin', JSON.stringify(action.payload));
 
             return {
                 token: JSON.stringify(action.payload),
@@ -103,6 +104,7 @@ const reducer = (state: InitStateType, action: ActionReducerType): InitStateType
 
         case ActionType.logout:
             localStorage.removeItem('token');
+            window.location.reload();
 
             return {
                 token: '',
@@ -174,8 +176,12 @@ const StoreContextProvider = (props: { children: React.ReactNode }) => {
     }
 
     setTimeout(() => {
-        localStorage.removeItem('successShop')
+        localStorage.removeItem('successShop');
     }, 4000);
+
+    setTimeout(() => {
+        localStorage.removeItem('loggedin');
+    }, 5000);
 
     return (
         <StoreContext.Provider value={contextValue}>
