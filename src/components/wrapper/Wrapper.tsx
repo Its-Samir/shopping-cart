@@ -6,8 +6,8 @@ function Wrapper(props: { children: React.ReactNode }) {
 
     // using useEffect to change the state of showDropdownCart, so that the cart badge can disappear when directly click cart link in mobile device
     useEffect(() => {
-        window.location.href === `${window.location.origin}/#/cart` && setShowDropdownCart(false);
-        window.location.href === `${window.location.origin}/#/auth` && setShowDropdownCart(false);
+        window.location.href === `${window.location.origin}/cart` && setShowDropdownCart(false);
+        window.location.href === `${window.location.origin}/auth` && setShowDropdownCart(false);
 
     }, [showDropdownCart])
 

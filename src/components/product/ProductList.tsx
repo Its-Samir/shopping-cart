@@ -13,7 +13,7 @@ function ProductList() {
 
   useEffect(() => {
     let title = document.querySelector('title')!;
-    title.innerText = 'CartInFlows | Home';
+    title.innerText = 'Cartflow | Home';
   }, []);
 
   useEffect(() => {
@@ -50,7 +50,7 @@ function ProductList() {
       </Box>
 
       <Box sx={{ textAlign: 'center', margin: '2rem', backgroundColor: '#90da96', padding: '1rem', color: '#ffffff', borderRadius: '20px' }}>
-        <h1>Subscribe to CartInFlows</h1>
+        <h1>Subscribe to Cartflow</h1>
         <p>To get latest updates.</p>
         <Box sx={{ margin: '15px' }}>
           <Input spellCheck={false} type='email' placeholder='Enter your Email' style={{ padding: '5px' }} />
@@ -59,7 +59,7 @@ function ProductList() {
       </Box>
 
       <footer style={{ padding: '1rem', textAlign: 'center', backgroundColor: 'white' }}>
-        <strong>CartInFlows</strong>
+        <strong>Cartflow</strong>
       </footer>
     </>
   )

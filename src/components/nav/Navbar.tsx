@@ -9,14 +9,14 @@ function Navbar(props: { showCart: boolean, openCart: () => void, closeCart: () 
 
   return (
     <nav className="navbar">
-      <Link style={{ textDecoration: 'none', color: 'black' }} to={'/'}><h1>CartInFlows</h1></Link>
+      <Link style={{ textDecoration: 'none', color: 'black' }} to={'/'}><h1>Cartflow</h1></Link>
       {/* <NavOptions itemsLength={ctx.items.length} onLogout={ctx.logout} isLoggedIn={ctx.isLoggedIn} /> */}
 
       <ul className='links'>
         <Link onMouseOver={() => props.closeCart()} to={'/'}><li>Home</li></Link>
         <Link onMouseOver={() => props.openCart()} to={'/cart'}>
           <li>
-            Cart {ctx.items.length > 0 && window.location.href !== `${window.location.origin}/#/cart` && <span className='cartBadge'>{ctx.items.length}</span>}
+            Cart {ctx.items.length > 0 && window.location.href !== `${window.location.origin}/cart` && <span className='cartBadge'>{ctx.items.length}</span>}
           </li>
         </Link>
         {!ctx.isLoggedIn && <Link to={'/auth'}><li>Login / Register</li></Link>}

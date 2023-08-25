@@ -6,7 +6,7 @@ function NavOptions(props: { onLogout: () => void, itemsLength: number, isLogged
         <div className="navOptions">
             <ul>
                 <Link to={'/cart'}>
-                    <li>Cart {props.itemsLength > 0 && window.location.href !== `${window.location.origin}/#/cart` && <span className='cartBadge'>{props.itemsLength}</span>}
+                    <li>Cart {props.itemsLength > 0 && window.location.href !== `${window.location.origin}/cart` && <span className='cartBadge'>{props.itemsLength}</span>}
                     </li>
                 </Link>
                 {!props.isLoggedIn ?
