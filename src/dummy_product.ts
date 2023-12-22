@@ -40,7 +40,7 @@ export const products: Product[] = [
         id: '4',
         title: 'Hoodie',
         rating: 4.7,
-        img: 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.j-g7Nbv30dslptWqaRHkBgAAAA%26pid%3DApi&f=1&ipt=207f331b9d1e1850524eee72059fa808a34c4bd02c83aec427b0ff2c46232eac&ipo=images',
+        img: 'https://i5.walmartimages.com/asr/8d579c67-729d-4153-9a30-25a1befbbe0c.2ae52a05e011bf7e93b6e30b91d6e803.jpeg?odnHeight=450&odnWidth=450&odnBg=ffffff',
         price: 2599,
         color: 'Default',
         quantity: 1
