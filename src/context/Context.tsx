@@ -1,19 +1,19 @@
 import React, { useCallback, useReducer } from 'react';
 import { Product, products } from '../dummy_product';
 
-enum ActionType {
-    add,
-    remove,
-    addOne,
-    login,
-    logout,
-    checkout,
-    payment
+enum Action {
+    ADD = "ADD",
+    REMOVE = "REMOVE",
+    ADDONE = "ADDONE",
+    LOGIN = "LOGIN",
+    LOGOUT = "LOGOUT",
+    CHECKOUT = "CHECKOUT",
+    PAYMENT = "PAYMENT"
 }
 
-type ActionReducerType = {
-    type: ActionType;
-    payload?: string | object;
+type ReducerActionType = {
+    type: Action;
+    payload?: any;
 }
 
 type InitStateType = {
@@ -22,15 +22,19 @@ type InitStateType = {
     totalPrice: number;
 }
 
-const initState: InitStateType = { token: JSON.parse(localStorage.getItem('token')!) || null, items: [], totalPrice: 0 };
+const initState: InitStateType = {
+    token: JSON.parse(localStorage.getItem('token')!) || null,
+    items: [],
+    totalPrice: 0
+};
 
-const reducer = (state: InitStateType, action: ActionReducerType): InitStateType => {
+const reducer = (state: InitStateType, action: ReducerActionType): InitStateType => {
     let updatedItems: Product[] = [...state.items];
     const product: Product = products.find(p => p.id === action.payload)!;
     const productIndex = state.items.findIndex(p => p.id === action.payload);
 
     switch (action.type) {
-        case ActionType.add:
+        case "ADD":
 
             if (productIndex >= 0) {
                 updatedItems = state.items.map(p => p.id === action.payload ? { ...p, quantity: p.quantity + 1 } : p);
@@ -44,7 +48,7 @@ const reducer = (state: InitStateType, action: ActionReducerType): InitStateType
                 totalPrice: state.totalPrice + product.price * product.quantity,
             }
 
-        case ActionType.remove:
+        case "REMOVE":
 
             const prod: Product = state.items.find(p => p.id === action.payload)!;
 
@@ -60,7 +64,7 @@ const reducer = (state: InitStateType, action: ActionReducerType): InitStateType
                 totalPrice: state.totalPrice - product.price * product.quantity
             }
 
-        case ActionType.addOne:
+        case "ADDONE":
             updatedItems = state.items.map(p => {
                 if (p.id === action.payload) {
                     return { ...p, quantity: p.quantity + 1 }
@@ -74,7 +78,7 @@ const reducer = (state: InitStateType, action: ActionReducerType): InitStateType
                 totalPrice: state.totalPrice + product.price * product.quantity
             }
 
-        case ActionType.checkout:
+        case "CHECKOUT":
             localStorage.setItem('successShop', JSON.stringify('successShop'));
 
             return {
@@ -83,7 +87,7 @@ const reducer = (state: InitStateType, action: ActionReducerType): InitStateType
                 totalPrice: state.totalPrice
             }
 
-        case ActionType.payment:
+        case "PAYMENT":
             localStorage.setItem('successShop', JSON.stringify('successShop'));
 
             return {
@@ -92,7 +96,7 @@ const reducer = (state: InitStateType, action: ActionReducerType): InitStateType
                 totalPrice: 0
             }
 
-        case ActionType.login:
+        case "LOGIN":
             localStorage.setItem('token', JSON.stringify(action.payload));
             localStorage.setItem('loggedin', JSON.stringify(action.payload));
 
@@ -102,7 +106,7 @@ const reducer = (state: InitStateType, action: ActionReducerType): InitStateType
                 totalPrice: state.totalPrice
             }
 
-        case ActionType.logout:
+        case "LOGOUT":
             localStorage.removeItem('token');
             window.location.reload();
 
@@ -148,28 +152,29 @@ export const StoreContext = React.createContext<ContextType>({
 const StoreContextProvider = (props: { children: React.ReactNode }) => {
     const [state, dispatch] = useReducer(reducer, initState);
 
-    const add = useCallback((id: string) => dispatch({ type: ActionType.add, payload: id }), []);
-    const remove = useCallback((id: string) => dispatch({ type: ActionType.remove, payload: id }), []);
-    const addOne = useCallback((id: string) => dispatch({ type: ActionType.addOne, payload: id }), []);
-    const checkout = useCallback(() => dispatch({ type: ActionType.checkout }), []);
-    const payment = useCallback(() => dispatch({ type: ActionType.payment }), []);
+    const addToCart = useCallback((id: string) => dispatch({ type: Action.ADD, payload: id }), []);
+    const removeFromCart = useCallback((id: string) => dispatch({ type: Action.REMOVE, payload: id }), []);
+    const addOne = useCallback((id: string) => dispatch({ type: Action.ADDONE, payload: id }), []);
+    const checkout = useCallback(() => dispatch({ type: Action.CHECKOUT }), []);
+    const makePayment = useCallback(() => dispatch({ type: Action.PAYMENT }), []);
 
     const login = useCallback((token: string) => {
-        dispatch({ type: ActionType.login, payload: token });
+        dispatch({ type: Action.LOGIN, payload: token });
     }, []);
+    
     const logout = useCallback(() => {
-        dispatch({ type: ActionType.logout });
+        dispatch({ type: Action.LOGOUT });
     }, []);
 
     const contextValue: ContextType = {
         items: state.items,
         token: state.token,
         isLoggedIn: !!state.token && state.token.length > 800,
-        add,
-        remove,
+        add: addToCart,
+        remove: removeFromCart,
         addOne,
         checkout,
-        payment,
+        payment: makePayment,
         login,
         logout,
         totalPrice: state.totalPrice
@@ -177,11 +182,8 @@ const StoreContextProvider = (props: { children: React.ReactNode }) => {
 
     setTimeout(() => {
         localStorage.removeItem('successShop');
-    }, 4000);
-
-    setTimeout(() => {
         localStorage.removeItem('loggedin');
-    }, 5000);
+    }, 4000);
 
     return (
         <StoreContext.Provider value={contextValue}>

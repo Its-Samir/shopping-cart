@@ -12,24 +12,6 @@ function Cart() {
     title.innerText = 'Cart';
   }, []);
 
-  const checkout = async () => {
-    // await fetch('http://localhost:5000/checkout', {
-    //         method: 'POST',
-    //         headers: {
-    //             'Content-Type': 'application/json'
-    //         },
-    //         body: JSON.stringify({ items: ctx.items })
-    //     }).then((response) => {
-    //         return response.json();
-    //     }).then((data) => {
-    //         if (data.url) {
-    //             window.location.assign(data.url);
-    //         }
-    //     }).catch((err) => {
-    //         console.log(err);
-    //     });
-  }
-
   function checkoutHandler() {
     navigate('/shopping/checkout/form');
     ctx.checkout();
